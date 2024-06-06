@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { type ClassValue } from 'clsx';
-  import { cn } from "$lib";
+import { cn } from '$lib'
+import type { ClassValue } from 'clsx'
 
-  const { className = "" as ClassValue } = $props();
+const { className = '' as ClassValue } = $props()
 </script>
 
 <svg
