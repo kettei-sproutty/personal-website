@@ -5,7 +5,7 @@ export type ResumeContactType = {
   name: 'email' | 'phone' | (string & {})
   value: string
   Icon?: Component
-};
+}
 </script>
 
 <script lang="ts">
