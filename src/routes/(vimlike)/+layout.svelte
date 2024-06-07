@@ -1,40 +1,43 @@
 <script lang="ts">
-  import LeftIcon from "$icons/left-icon.svelte";
-  import LogoIcon from "$icons/logo-icon.svelte";
-  import { page } from '$app/stores';
+import { goto } from '$app/navigation'
+import { page } from '$app/stores'
+import LeftIcon from '$icons/left-icon.svelte'
+import LogoIcon from '$icons/logo-icon.svelte'
 
-  enum Mode {
-    NORMAL = "normal",
-    INSERT = "insert"
-  };
+enum Mode {
+  NORMAL = 'normal',
+  INSERT = 'insert',
+}
 
-  let mode = $state<Mode>(Mode.NORMAL);
+let mode = $state<Mode>(Mode.NORMAL)
 
-  const url = $derived(`${$page.url?.pathname}/+page.svelte}`);
+const url = $derived(`${$page.url?.pathname}/+page.svelte}`)
 
-  $effect(() => {
-    const modeHandler = (e: KeyboardEvent | MouseEvent) => {
-      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
-        mode =  Mode.INSERT;
-      } else if (mode === Mode.INSERT) {
-        mode = Mode.NORMAL
-      } else if (mode === Mode.NORMAL && e instanceof KeyboardEvent) {
-        if (e.key === "Backspace") {
-          history.back();
-        }
+$effect(() => {
+  const modeHandler = (e: KeyboardEvent | MouseEvent) => {
+    if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+      mode = Mode.INSERT
+    } else if (mode === Mode.INSERT) {
+      mode = Mode.NORMAL
+    } else if (mode === Mode.NORMAL && e instanceof KeyboardEvent) {
+      if (e.key === 'Backspace') {
+        history.back()
+        // Fallback if there is no history
+        goto('/')
       }
-    };
+    }
+  }
 
-    window.addEventListener("keydown", modeHandler);
-    window.addEventListener("click", modeHandler);
+  window.addEventListener('keydown', modeHandler)
+  window.addEventListener('click', modeHandler)
 
-    return () => {
-      window.removeEventListener("keydown", modeHandler);
-      window.removeEventListener("click", modeHandler);
-    };
-  });
+  return () => {
+    window.removeEventListener('keydown', modeHandler)
+    window.removeEventListener('click', modeHandler)
+  }
+})
 
-  const { children } = $props();
+const { children } = $props()
 </script>
 
 <div class="min-h-dvh relative">
