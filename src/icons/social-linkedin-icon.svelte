@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { type ClassValue } from 'clsx';
-  import { cn } from "$lib";
+import { cn } from '$lib'
+import type { ClassValue } from 'clsx'
 
-  const { className = "" as ClassValue } = $props();
+const { className = '' as ClassValue } = $props()
 </script>
 
 <svg
@@ -16,7 +16,9 @@
   stroke-linecap="round"
   stroke-linejoin="round"
   class={cn("size-6", className)}
-  ><path
+  >
+  <title>LinkedIn Icon</title>
+  <path
     d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
   ></path><rect width="4" height="12" x="2" y="9"></rect><circle
     cx="4"
