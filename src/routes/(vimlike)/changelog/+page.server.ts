@@ -3,10 +3,11 @@ import { compile } from 'mdsvex'
 
 export const load = async () => {
   try {
-    const changelogs = await fetch(
-      'https://raw.githubusercontent.com/kettei-sproutty/personal-website/release-please--branches--main--components--www/CHANGELOG.md',
+    const changelogsRaw = await fetch(
+      'https://raw.githubusercontent.com/kettei-sproutty/personal-website/main/CHANGELOG.md',
     )
-    const changelogText = await changelogs.text()
+    const changelogText = await changelogsRaw.text()
+
     const compiled = await compile(changelogText)
     if (!compiled) {
       redirect(500, '/500')
