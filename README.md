@@ -16,3 +16,12 @@ let alessio = Developer {
   code: vec!["Rust", "Typescript"],
 };
 ```
+
+<h2>About portfolio</h2>
+
+Build with <a href="https://kit.svelte.dev/">SvelteKit</a> and <a href="https://tailwindcss.com/">TailwindCSS</a>.
+
+<h3>TODOs</h3>
+
+- [ ] Print PDF Resume without using `window.print`;
+- [ ] Add a better responsive support on `about` page;

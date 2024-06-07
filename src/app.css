@@ -4,6 +4,8 @@
 
 html {
   font-size: 100%;
+  scrollbar-color: var(--primary-500) transparent;
+  scrollbar-width: thin;
   @apply font-sans bg-primary-900 text-primary-100;
   @apply selection:bg-primary-500 selection:text-primary-100;
 }

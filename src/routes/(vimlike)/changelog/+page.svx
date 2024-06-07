@@ -1,0 +1,39 @@
+<script lang="ts">
+  let { data } = $props();
+</script>
+
+<main class="container mx-auto px-4 py-8">
+  <section id="changelog">
+    {@html data.data.changelogs.code}
+  </section>
+</main>
+
+<style lang="postcss">
+  #changelog {
+    :global(h1) {
+      @apply text-2xl font-bold;
+    };
+
+    :global(h2) {
+      @apply text-primary-400 font-bold mb-4;
+    };
+
+    :global(h3) {
+      @apply text-base font-bold mb-1;
+    }
+
+    :global(ul) {
+      @apply list-disc ml-4 mb-4;
+    }
+
+    :global(li) {
+      @apply text-sm;
+    }
+
+
+    :global(a) {
+      @apply underline;
+    }
+  }
+</style>
+

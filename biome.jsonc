@@ -10,6 +10,9 @@
     "lineWidth": 100,
     "attributePosition": "auto"
   },
+  "files": {
+    "ignore": ["*.svx"]
+  },
   "linter": {
     "rules": {
       "recommended": true,
