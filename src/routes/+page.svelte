@@ -12,14 +12,14 @@ import { goto } from '$app/navigation'
 const routes: Record<string, string> = {
   '1': 'about',
   '2': 'contacts',
-  // '3': 'projects',
-  // '4': 'blog',
 }
 
 const comingSoonRoutes = ['projects', 'blog']
 
 $effect(() => {
   const handleKeydown = (e: KeyboardEvent) => {
+    if (e.key === 'c') goto('/changelog')
+
     const route = routes[e.key]
     if (route) goto(`/${route}`)
   }
@@ -46,6 +46,6 @@ $effect(() => {
     {/each}
   </div>
   <div class="absolute bottom-0 right-0 text-primary-200 px-2 uppercase">
-    <a href="/changelog" hreflang="en">Changelog</a>
+    <a href="/changelog" hreflang="en">Changelog <kbd class="text-primary-300 text-sm">(c)</kbd></a>
   </div>
 </main>
