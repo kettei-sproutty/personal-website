@@ -1,12 +1,17 @@
-<script lang="ts">
-  import Resume, { resume } from "$components/resume/resume.svelte";
-  import DownloadIcon from "$icons/download-icon.svelte";
-  import { Highlight } from "svelte-highlight";
-  import json from "svelte-highlight/languages/json";
+<svelte:head>
+  <title>About me | Alessio Marchi</title>
+  <link rel="canonical" href="https://alessiomarchi.com/about" />
+</svelte:head>
 
-  const handleDownload = () => {
-    window.print();
-  };
+<script lang="ts">
+import Resume, { resume } from '$components/resume/resume.svelte'
+import DownloadIcon from '$icons/download-icon.svelte'
+import { Highlight } from 'svelte-highlight'
+import json from 'svelte-highlight/languages/json'
+
+const handleDownload = () => {
+  window.print()
+}
 </script>
 
 <main class="content h-page divide-x divide-primary-600 relative">

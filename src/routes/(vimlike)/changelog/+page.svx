@@ -1,3 +1,7 @@
+<svelte:head>
+  <title>Changelog | Alessio Marchi</title>
+</svelte:head>
+
 <script lang="ts">
   let { data } = $props();
 </script>

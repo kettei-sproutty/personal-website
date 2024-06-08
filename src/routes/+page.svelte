@@ -1,11 +1,3 @@
-<svelte:head>
-  <title>Alessio Marchi</title>
-  <meta name="description" content="Alessio Marchi's personal website" />
-  <meta name="keywords" content="alessio marchi, alessio marchi developer, typescript, rust" />
-  <meta name="author" content="Alessio Marchi" />
-  <meta name="robots" content="index, follow" />
-</svelte:head>
-
 <script lang="ts">
 import { goto } from '$app/navigation'
 

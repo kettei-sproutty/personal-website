@@ -1,3 +1,10 @@
+<svelte:head>
+  <title>Contacts | Alessio Marchi</title>
+  <meta name="author" content="Alessio Marchi" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://alessiomarchi.com/about" />
+</svelte:head>
+
 <script lang="ts">
 import { enhance } from '$app/forms'
 import TextDivider from '$components/text-divider.svelte'
