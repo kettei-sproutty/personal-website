@@ -1,3 +1,7 @@
+<svelte:head>
+  <title>Alessio Marchi</title>
+</svelte:head>
+
 <script lang="ts">
 import { goto } from '$app/navigation'
 
