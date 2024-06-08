@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-  export type ResumeSidebarType = Record<string, string[]>
+export type ResumeSidebarType = Record<string, string[]>
 </script>
 
 <script lang="ts">
@@ -12,7 +12,7 @@
   const { sidebarInfos }: ResumeSidebarProps = $props();
 </script>
 
-<section id="resume-sidebar" class="w-full bg-primary-800 border-primary-300 flex flex-col gap-4 p-2 min-h-full">
+<aside id="resume-sidebar" class="w-full bg-primary-800 border-primary-300 flex flex-col gap-4 p-2 min-h-full">
   {#each Object.keys(sidebarInfos) as category}
     <div class="gap-2">
       <TextDivider padding={false} className="text-sm pb-2 first-letter:uppercase">{category}</TextDivider>
@@ -23,4 +23,4 @@
       </ul>
     </div>
   {/each}
-</section>
+</aside>
