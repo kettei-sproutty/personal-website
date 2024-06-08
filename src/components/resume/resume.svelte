@@ -27,7 +27,7 @@ export const resume = {
     'I love sharing knowledge, discuss and collaborate with people from all over the world, trying to improving myself day by day, learning new things and experimenting with new technologies.',
   ],
   contacts: [
-    { name: 'email', value: 'about@alessiomarchi.dev', Icon: SocialEmailIcon },
+    { name: 'email', value: 'mailto:about@alessiomarchi.dev', Icon: SocialEmailIcon },
     { name: 'GitHub', value: 'https://github.com/kettei-sproutty', Icon: SocialGithubIcon },
     { name: 'Twitter', value: 'https://x.com/alessiom97', Icon: SocialXIcon },
     {
