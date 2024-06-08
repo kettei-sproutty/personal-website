@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.1.0](https://github.com/kettei-sproutty/personal-website/compare/v1.0.0...v1.1.0) (2024-06-08)
+
+
+### Features
+
+* **homepage:** add shortcut for changelog ([453d620](https://github.com/kettei-sproutty/personal-website/commit/453d620b7cb7b7988f9eff820d2236450aa0332d))
+* **seo:** page-based title, add meta tags ([1e2c7d1](https://github.com/kettei-sproutty/personal-website/commit/1e2c7d119adaf874f5876bf221cfc786f0c93bc1))
+
+
+### Bug Fixes
+
+* **back-space:** fallback to homepage if no history ([87ecd29](https://github.com/kettei-sproutty/personal-website/commit/87ecd2907163bfa4a614764ccef5bcf572efe2e7))
+* **layout:** remove trailing character ([6aff3dc](https://github.com/kettei-sproutty/personal-website/commit/6aff3dcdbbaa42e6bf7942a542d527304fbdcc86))
+* **resume:** add mailto to email in resume ([7c18894](https://github.com/kettei-sproutty/personal-website/commit/7c18894269b735d4f0f160626dff4024282eea7c))
+* **seo:** reset title in homepage ([13e1f50](https://github.com/kettei-sproutty/personal-website/commit/13e1f5039ed3d888fee8c6757fbddbf8c117c315))
+
 ## 1.0.0 (2024-06-07)
 
 
