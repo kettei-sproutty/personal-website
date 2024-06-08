@@ -11,7 +11,7 @@ enum Mode {
 
 let mode = $state<Mode>(Mode.NORMAL)
 
-const url = $derived(`${$page.url?.pathname}/+page.svelte}`)
+const url = $derived(`${$page.url?.pathname}/+page.svelte`)
 
 $effect(() => {
   const modeHandler = (e: KeyboardEvent | MouseEvent) => {
