@@ -24,4 +24,4 @@ export const load = async () => {
   }
 }
 
-export const ssr = true
+export const prerender = true
