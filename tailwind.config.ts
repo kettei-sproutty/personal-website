@@ -4,7 +4,8 @@ export default {
   content: ['./src/**/*.{html,js,svelte,ts,svx}'],
   theme: {
     fontFamily: {
-      sans: ['Exo2'],
+      sans: ['Exo\\ 2'],
+      mono: ['JetBrains\\ Mono'],
     },
     extend: {
       colors: {

@@ -1,5 +1,5 @@
 .hljs {
-  @apply text-sm;
+  @apply text-sm font-mono;
 
   &-attr {
     @apply font-bold text-primary-200;
