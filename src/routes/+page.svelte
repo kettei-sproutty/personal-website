@@ -9,9 +9,10 @@ import { goto } from '$app/navigation'
 const routes: Record<string, string> = {
   '1': 'about',
   '2': 'contacts',
+  '3': 'blog',
 }
 
-const comingSoonRoutes = ['projects', 'blog']
+const comingSoonRoutes = ['projects']
 
 $effect(() => {
   const handleKeydown = (e: KeyboardEvent) => {
