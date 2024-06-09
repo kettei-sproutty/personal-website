@@ -1,0 +1,15 @@
+.hljs {
+  @apply text-sm;
+
+  &-attr {
+    @apply font-bold text-primary-200;
+  }
+
+  &-punctuation {
+    @apply font-thin text-primary-200;
+  }
+
+  &-string {
+    @apply font-thin text-primary-300;
+  }
+}

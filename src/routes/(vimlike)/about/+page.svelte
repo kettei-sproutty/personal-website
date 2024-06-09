@@ -8,6 +8,7 @@ import Resume, { resume } from '$components/resume/resume.svelte'
 import DownloadIcon from '$icons/download-icon.svelte'
 import { Highlight } from 'svelte-highlight'
 import json from 'svelte-highlight/languages/json'
+import './highlight.css'
 
 const handleDownload = () => {
   window.print()
@@ -65,7 +66,7 @@ const handleDownload = () => {
   <section class="about-json overflow-hidden h-full">
     <div class="w-full bg-primary-700 px-2 flex justify-end">+me.json</div>
     <Highlight
-      class="overflow-scroll"
+      class="overflow-scroll text-sm"
       style="height: calc(100% - var(--header-height)"
       language={json}
       code={JSON.stringify(resume, null, 2)}
@@ -94,6 +95,7 @@ const handleDownload = () => {
   .about-json {
     display: none;
   }
+
 
   @media (min-width: 768px) {
     .content {
