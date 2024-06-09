@@ -1,5 +1,6 @@
 <svelte:head>
   <title>Alessio Marchi</title>
+  <link rel="canonical" href="https://alessiomarchi.com" />
 </svelte:head>
 
 <script lang="ts">

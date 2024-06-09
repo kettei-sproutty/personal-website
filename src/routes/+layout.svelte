@@ -4,7 +4,6 @@
   <meta name="keywords" content="Alessio Marchi, Senior Software Developer, Rome, Italy, TypeScript, React, NextJS, Svelte, Rust" />
   <meta name="author" content="Alessio Marchi" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://alessiomarchi.com" />
 </svelte:head>
 
 <script>
