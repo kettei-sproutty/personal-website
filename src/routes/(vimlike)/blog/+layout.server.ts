@@ -1,15 +1,9 @@
-export const load = async () => {
-  const articles = [
-    { slug: '1', title: 'hello-world', updated: Date.now() },
-    { slug: '2', title: 'hello-world-2', updated: Date.now() - 1000 * 60 * 60 * 24 },
-  ]
+import { getBlogPosts } from '$lib/blog'
 
-  return {
-    status: 200,
-    data: {
-      articles,
-    },
-  }
+export const load = async () => {
+  const articles = await getBlogPosts()
+
+  return { articles }
 }
 
 export const prerender = true
