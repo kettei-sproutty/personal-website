@@ -1,14 +1,14 @@
 <script lang="ts">
-  import type { ResumeType } from "./resume.svelte";
+import type { ResumeType } from './resume.svelte'
 
-  type ResumeHeaderProps = {
-    resume: ResumeType;
-  };
+type ResumeHeaderProps = {
+  resume: ResumeType
+}
 
-  const { resume }: ResumeHeaderProps = $props();
-  const [firstLetter, lastLetter] = resume.name
-    .split(" ")
-    .reduce((acc, name) => acc.concat(name[0]), [] as string[]);
+const { resume }: ResumeHeaderProps = $props()
+const [firstLetter, lastLetter] = resume.name
+  .split(' ')
+  .reduce((acc, name) => acc.concat(name[0]), [] as string[])
 </script>
 
 <section id="resume-header">
@@ -21,5 +21,5 @@
       {resume.name}
     </h1>
   </div>
-  <h2 class="text-xl text-primary-400 text-right">{resume.role}</h2>
+  <h2 class="text-xl text-primary-500 text-right">{resume.role}</h2>
 </section>
