@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.1](https://github.com/kettei-sproutty/personal-website/compare/v1.1.0...v1.1.1) (2024-06-09)
+
+
+### Bug Fixes
+
+* **a11y:** contrast on resume ([8d44b08](https://github.com/kettei-sproutty/personal-website/commit/8d44b0846ae6caa630f115c2b87e19ff03e30c59))
+* **about:** add highlight styles ([bb2ea8f](https://github.com/kettei-sproutty/personal-website/commit/bb2ea8f47475d85b3a7c3598027bf0869a777800))
+* **changelog:** remove ssr in favor of prerender ([d7af168](https://github.com/kettei-sproutty/personal-website/commit/d7af16858099c5839b182c9ec87a54da8d9b458c))
+* **resume:** change sidebar tag to aside ([4f89bc6](https://github.com/kettei-sproutty/personal-website/commit/4f89bc65f5e8c174dd432aa97211d500d072e8aa))
+* **seo:** remote canonical from layout ([28067df](https://github.com/kettei-sproutty/personal-website/commit/28067df75fc4c9dcb511c58ab720413fbcd53fd1))
+* **styles:** add mono font ([438c755](https://github.com/kettei-sproutty/personal-website/commit/438c7559a2d86b7fa8b38046e6adc3290c2c69ee))
+
 ## [1.1.0](https://github.com/kettei-sproutty/personal-website/compare/v1.0.0...v1.1.0) (2024-06-08)
 
 
