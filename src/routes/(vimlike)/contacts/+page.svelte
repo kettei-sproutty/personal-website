@@ -70,9 +70,9 @@ const handleChange: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> =
     I'd love to hear from you. Whether you have a question, feedback, or just
     want to say hello, feel free to reach out.
   </p>
-  <div class="flex items-center justify-evenly w-full p-4 gap-2">
+  <div class="flex items-center justify-evenly w-full p-4 gap">
     {#each contacts as { name, url, Icon }}
-      <div class="flex flex-col items-center gap-1">
+      <div class="flex flex-col items-center">
         <a
           href={url}
           class="rounded-full bg-primary-700 text-primary-100 p-2 flex items-center justify-center hover:border-primary-200 border-transparent border"
