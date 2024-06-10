@@ -9,105 +9,129 @@
 <script lang="ts">
 import { goto } from '$app/navigation'
 import { page } from '$app/stores'
+import Button from '$components/ui/button.svelte'
+import ShareIcon from '$icons/share-icon.svelte'
+import SocialLinkedInIcon from '$icons/social-linkedin-icon.svelte'
+import SocialTwitterIcon from '$icons/social-x-icon.svelte'
 import { cn } from '$lib'
+import { setMotions } from '$lib/blog'
+import type { MouseEventHandler } from 'svelte/elements'
 
-let { data } = $props()
+let { data, children } = $props()
 
-let selected = $state($page.params.slug)
 let multiplier = $state<number | null>(null)
 let lastMotion = $state<string | null>(null)
-let intlOptionsDesktop: Intl.DateTimeFormatOptions = {
-  year: '2-digit',
-  month: 'short',
-  day: 'numeric',
-  hour: 'numeric',
-  minute: 'numeric',
-}
-let intlOptionsMobile: Intl.DateTimeFormatOptions = {
-  year: '2-digit',
-  month: 'short',
-  day: 'numeric',
-}
 
 $effect(() => {
   const handleKeyUp = (event: KeyboardEvent) => {
-    if (event.key === 'j') {
-      const currentIndex = data.articles.findIndex((article) => article.slug === selected)
-      if (currentIndex < data.articles.length - 1) {
-        const futureIndex = currentIndex + (multiplier || 1)
-        selected = data.articles[futureIndex]
-          ? data.articles[futureIndex].slug
-          : data.articles[data.articles.length - 1].slug
-        goto(`/blog/${selected}`)
-        lastMotion = `${multiplier || ''} j`
-        if (multiplier) multiplier = null
-      }
-    }
-    if (event.key === 'k') {
-      const currentIndex = data.articles.findIndex((article) => article.slug === selected)
-      if (currentIndex > 0) {
-        const pastIndex = currentIndex - (multiplier || 1)
-        selected = data.articles[pastIndex] ? data.articles[pastIndex].slug : data.articles[0].slug
-        lastMotion = null
-        goto(`/blog/${selected}`)
-        lastMotion = `${multiplier || ''} k`
-        if (multiplier) multiplier = null
-      }
+    const motion = setMotions({
+      articles: data.articles,
+      slug: $page.params.slug,
+      key: event.key,
+      multiplier,
+    })
+    if (!motion) return
+
+    if ('multiplier' in motion) {
+      multiplier = motion.multiplier
+      lastMotion = motion.multiplier.toString()
+      return
     }
 
-    if (event.key.match(/[0-9]/)) {
-      multiplier = Number.parseInt(event.key)
-      lastMotion = `${multiplier}`
-    }
+    const { slug } = motion
+    goto(`/blog/${slug}`)
+    lastMotion = `${multiplier || ''}${event.key}`
+    multiplier = null
   }
+
   window.addEventListener('keyup', handleKeyUp)
 
   return () => window.removeEventListener('keyup', handleKeyUp)
 })
+
+const handleShare: MouseEventHandler<HTMLButtonElement> = (event) => {
+  event.preventDefault()
+  if ('navigator' in window) {
+    navigator.share({
+      title: 'Alessio Marchi',
+      text: 'Check out this blog post',
+      url: window.location.href,
+    })
+  }
+}
+
+const shortcuts = [
+  { key: '0-9', description: 'multiplier' },
+  { key: 'j', description: 'list down' },
+  { key: 'k', description: 'list up' },
+  { key: 'J', description: 'page down' },
+  { key: 'K', description: 'page up' },
+  { key: 'x', description: 'repeat last' },
+  { key: '/', description: 'filter' },
+]
 </script>
 
 <div class="min-h-page h-page relative">
-  <main class="grid grid-cols-3 p-4 gap-4 min-h-page h-page grid-rows-12">
+  <main class="grid grid-cols-3 p-4 gap-4 max-h-[calc(100dvh - 10rem)] h-full grid-rows-12">
     <aside class="blog-section md:col-span-1 col-span-3 row-span-11">
       <h2 class="blog-section__title">Articles</h2>
+      <div class="h-2"></div>
       <ul class="list-none p-2 text-sm text-primary-200 flex flex-col gap">
         {#each data.articles as article}
           <li class="w-full">
             <a
-              aria-current={selected === article.slug ? 'page' : undefined}
+              aria-current={$page.params.slug === article.slug ? 'page' : undefined}
               href="/blog/{article.slug}"
               class={cn(
                 "flex justify-between hover:bg-primary-600 transition-colors duration-200 ease-in-out px-2",
                 "focus:bg-primary-500", {
-                "bg-primary-700": selected === article.slug
+                "bg-primary-700": $page.params.slug === article.slug
               })}
             >
-            <span>{article.metadata.title}</span>
-            <span class="text-primary-400 lg:block hidden">{Intl.DateTimeFormat('en', intlOptionsDesktop).format(new Date(article.metadata.date))}</span>
-            <span class="text-primary-400 lg:hidden block">{Intl.DateTimeFormat('en', intlOptionsMobile).format(new Date(article.metadata.date))}</span>
+              <span>{article.metadata.title}</span>
+              <span class="text-primary-400">
+                {Intl.DateTimeFormat('en', { year: '2-digit', month: 'short', day: 'numeric' }).format(new Date(article.metadata.date))}
+              </span>
             </a>
           </li>
         {/each}
       </ul>
     </aside>
-    <section class="md:col-span-2 col-span-3 blog-section row-span-11">
-      <h2 class="blog-section__title">Post</h2>
-      <div class="p-2">
-        <slot />
-      </div>
-    </section>
+    <div class="md:col-span-2 col-span-3 row-span-11 grid grid-rows-10 gap-3">
+      <section class={cn("blog-section", {
+        "row-span-9": !!$page.params.slug,
+        "row-span-10": !$page.params.slug,
+        })}>
+        <h2 class="blog-section__title">Post</h2>
+        <div class="h-2"></div>
+        <div class="px-2 h-[98%] overflow-scroll overscroll-none">
+          {@render children?.()}
+        </div>
+      </section>
+      {#if $page.params.slug}
+      <section class="blog-section row-span-1 p-4">
+        <h2 class="blog-section__title">Share</h2>
+        <div class="flex flex-row gap-4">
+          <Button type="button" hasIcon><SocialTwitterIcon className="size-4" /><span>Twitter</span></Button>
+          <Button type="button" hasIcon><SocialLinkedInIcon className="size-4" /><span>LinkedIn</span></Button>
+          {#if typeof window !== 'undefined' && 'share' in navigator}
+            <Button onclick={handleShare} type="button" hasIcon><ShareIcon className="size-4" /><span>Share</span></Button>
+          {/if}
+        </div>
+      </section>
+      {/if}
+    </div>
   </main>
   <div class="fixed md:block hidden bottom-10 w-full px-4">
     <div class="p-2 blog-section flex justify-between px-4">
       <h2 class="blog-section__title">Shortcuts <span class="text-primary-400 font-thin">(keyup)</span></h2>
       <div class="flex gap-2 divide-x divide-primary-500 items-center">
-        <span class="text-primary-400 text-sm"><kbd class="text-primary-200">0-9</kbd> multiplier</span>
-        <span class="text-primary-400 text-sm pl-2"><kbd class="text-primary-200">j</kbd> list down</span>
-        <span class="text-primary-400 text-sm pl-2"><kbd class="text-primary-200">k</kbd> list up</span>
-        <span class="text-primary-400 text-sm pl-2"><kbd class="text-primary-200">J</kbd> page down</span>
-        <span class="text-primary-400 text-sm pl-2"><kbd class="text-primary-200">K</kbd> page up</span>
-        <span class="text-primary-400 text-sm pl-2"><kbd class="text-primary-200">x</kbd> repeat last</span>
-        <span class="text-primary-400 text-sm pl-2"><kbd class="text-primary-200">/</kbd> filter</span>
+        {#each shortcuts as { key, description }, i}
+          <div class="flex flex-row gap-1 items-center text-sm first:pl-0 pl-2">
+            <kbd class="text-primary-200">{key}</kbd>
+            <span class="text-primary-400 text-sm pl-2">{description}</span>
+          </div>
+        {/each}
       </div>
       <div class="text-sm">
         <span class="text-primary-400">Last Motion</span>
