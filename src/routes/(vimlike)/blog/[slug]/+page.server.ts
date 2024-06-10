@@ -1,4 +1,4 @@
-import { getBlogPosts } from '$lib/blog'
+import { getBlogPosts } from '$lib/blog.server'
 
 export const load = async (context) => {
   const slug = context.params.slug

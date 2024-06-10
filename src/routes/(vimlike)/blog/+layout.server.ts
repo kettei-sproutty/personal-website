@@ -1,4 +1,4 @@
-import { getBlogPosts } from '$lib/blog'
+import { getBlogPosts } from '$lib/blog.server'
 
 export const load = async () => {
   const articles = await getBlogPosts()
