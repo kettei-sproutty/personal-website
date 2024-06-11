@@ -55,8 +55,6 @@ $effect(() => {
   if (filteredArticles.length === 1) {
     goto(`/blog/${filteredArticles[0].slug}`)
   }
-
-  data.articles = filteredArticles
 })
 
 const closeModal = () => {
