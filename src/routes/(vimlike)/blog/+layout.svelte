@@ -35,26 +35,19 @@ let filteredArticles = $derived(
 )
 
 $effect(() => {
-  if (filteredArticles.length === data.articles.length) {
-    return
-  }
+  if (filteredArticles.length === data.articles.length) return
 
   if (filteredArticles.length === 0) {
     goto('/blog')
     return
   }
 
-  if (!$page.params.slug) {
+  if (
+    !$page.params.slug ||
+    filteredArticles.find((article) => article.slug === $page.params.slug) ||
+    filteredArticles.length === 1
+  )
     goto(`/blog/${filteredArticles[0].slug}`)
-  }
-
-  if (!filteredArticles.find((article) => article.slug === $page.params.slug)) {
-    goto(`/blog/${filteredArticles[0].slug}`)
-  }
-
-  if (filteredArticles.length === 1) {
-    goto(`/blog/${filteredArticles[0].slug}`)
-  }
 })
 
 const closeModal = () => {
@@ -88,7 +81,7 @@ $effect(() => {
     switch (motion.kind) {
       case 'null':
         event.preventDefault()
-        lastMotion = 'null'
+        lastMotion = null
         break
       case 'modal':
         event.preventDefault()
@@ -102,6 +95,24 @@ $effect(() => {
         event.preventDefault()
         selectArticle(motion.slug, event.key)
         break
+      case 'page': {
+        event.preventDefault()
+        const post = document.querySelector('#blog-post')
+        if (post) {
+          post.scrollBy({
+            top: (motion.direction === 'down' ? 100 : -100) * (multiplier || 1),
+            behavior: 'smooth',
+          })
+
+          lastMotion = `${multiplier || ''}${event.key}`
+        }
+        break
+      }
+      case 'repeat': {
+        event.preventDefault()
+        console.log('repeat')
+        break
+      }
     }
   }
 
@@ -153,7 +164,7 @@ const shortcuts = [
         })}>
         <h2 class="blog-section__title">Post</h2>
         <div class="h-2"></div>
-        <div class="px-2 h-[98%] overflow-scroll overscroll-none">
+        <div id="blog-post" class="px-2 h-[98%] overflow-scroll overscroll-none">
           {@render children?.()}
         </div>
       </section>
@@ -175,7 +186,7 @@ const shortcuts = [
     <div class="p-2 blog-section flex justify-between px-4">
       <h2 class="blog-section__title">Shortcuts <span class="text-primary-400 font-thin">(keyup)</span></h2>
       <div class="flex gap-2 divide-x divide-primary-500 items-center">
-        {#each shortcuts as { key, description }, i}
+        {#each shortcuts as { key, description }}
           <div class="flex flex-row gap-1 items-center text-sm first:pl-0 pl-2">
             <kbd class="text-primary-200">{key}</kbd>
             <span class="text-primary-400 text-sm pl-2">{description}</span>

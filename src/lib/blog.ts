@@ -17,8 +17,16 @@ type NullValue = { kind: 'null' }
 type Multiplier = { kind: 'multiplier'; multiplier: number }
 type SelectedArticle = { kind: 'select'; selected: BlogPost; lastMotion: string; slug: string }
 type ShowModal = { kind: 'modal' }
+type PageUpDown = { kind: 'page'; direction: 'up' | 'down' }
+type RepeatMotion = { kind: 'repeat' }
 
-type SetMotionReturnValue = NullValue | Multiplier | SelectedArticle | ShowModal
+type SetMotionReturnValue =
+  | NullValue
+  | Multiplier
+  | SelectedArticle
+  | ShowModal
+  | PageUpDown
+  | RepeatMotion
 
 export const setMotions = (options: SetMotionOptions): SetMotionReturnValue => {
   const motions: { [key: string]: () => SetMotionReturnValue } = {
@@ -85,22 +93,18 @@ export const setMotions = (options: SetMotionOptions): SetMotionReturnValue => {
   }
 
   const pageUp = () => {
-    console.log('pageUp')
-    return { kind: 'null' as const }
+    return { kind: 'page' as const, direction: 'up' as const }
   }
 
   const pageDown = () => {
-    console.log('pageDown')
-    return { kind: 'null' as const }
+    return { kind: 'page' as const, direction: 'down' as const }
   }
 
   const repeatMotion = () => {
-    console.log('repeatMotion')
-    return { kind: 'null' as const }
+    return { kind: 'repeat' as const }
   }
 
   const search = () => {
-    console.log('search')
     return { kind: 'modal' as const }
   }
 
