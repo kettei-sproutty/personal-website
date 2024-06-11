@@ -145,7 +145,7 @@ const shortcuts = [
 
 <div class="min-h-page h-page relative">
   <main class="grid grid-cols-3 p-4 gap-4 max-h-[calc(100dvh - 10rem)] h-full grid-rows-12">
-    <BlogSection id="articles" isAside class="md:col-span-1 col-span-3 row-span-11" label="articles">
+    <BlogSection id="articles" isAside class="md:col-span-1 col-span-3 row-span-11" label="Articles">
       <ul class="list-none p-2 text-sm text-primary-200 flex flex-col gap">
         {#if filteredArticles.length === 0 && data.articles.length > 0}
           <li class="w-full text-primary-400">No articles found, remove filters</li>
