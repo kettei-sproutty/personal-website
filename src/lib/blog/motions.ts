@@ -2,7 +2,7 @@ import type { BlogPost } from './post'
 
 export type MetadataKey = 'title' | 'description' | 'date' | 'slug'
 
-type SetMotionOptions = {
+type ProcessMotionsOptions = {
   key: string
   articles: BlogPost[]
   slug: string
@@ -16,7 +16,7 @@ type ShowModal = { kind: 'modal' }
 type PageUpDown = { kind: 'page'; direction: 'up' | 'down' }
 type RepeatMotion = { kind: 'repeat' }
 
-type SetMotionReturnValue =
+type ProcessMotionsReturnValue =
   | NullValue
   | Multiplier
   | SelectedArticle
@@ -24,8 +24,8 @@ type SetMotionReturnValue =
   | PageUpDown
   | RepeatMotion
 
-export const setMotions = (options: SetMotionOptions): SetMotionReturnValue => {
-  const motions: { [key: string]: () => SetMotionReturnValue } = {
+export const processMotions = (options: ProcessMotionsOptions): ProcessMotionsReturnValue => {
+  const motions: { [key: string]: () => ProcessMotionsReturnValue } = {
     k: () => prevArticle(),
     j: () => nextArticle(),
     K: () => pageDown(),
@@ -40,7 +40,7 @@ export const setMotions = (options: SetMotionOptions): SetMotionReturnValue => {
   const getIndex = (articles: BlogPost[], slug: string) =>
     articles.findIndex((article) => article.slug === slug)
 
-  const prevArticle = (): SetMotionReturnValue => {
+  const prevArticle = (): ProcessMotionsReturnValue => {
     const { articles, slug } = options
     const currentIndex = getIndex(articles, slug)
     const prevIndex = currentIndex - (options.multiplier || 1)

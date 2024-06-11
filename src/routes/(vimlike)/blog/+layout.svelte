@@ -13,7 +13,7 @@ import { BlogLink, BlogModal, BlogSection } from '$components/blog'
 import Button from '$components/ui/button.svelte'
 import { ShareIcon, SocialLinkedinIcon, SocialXIcon } from '$icons/index'
 import { cn } from '$lib'
-import { setMotions } from '$lib/blog/motions.js'
+import { processMotions } from '$lib/blog/motions.js'
 import { shortcuts } from '$lib/blog/shortcut'
 import type { MouseEventHandler } from 'svelte/elements'
 
@@ -92,7 +92,7 @@ $effect(() => {
   }
 
   const handleKeyUp = (event: KeyboardEvent) => {
-    const motion = setMotions({
+    const motion = processMotions({
       articles: data.articles,
       slug: $page.params.slug,
       key: event.key,
@@ -133,9 +133,9 @@ const handleShare: MouseEventHandler<HTMLButtonElement> = (event) => {
 </script>
 
 <div class="min-h-page h-page relative">
-  <main class="grid grid-cols-3 p-4 gap-4 max-h-[calc(100dvh - 10rem)] h-full grid-rows-12">
+  <main class="grid grid-cols-3 p-4 gap-4 max-h-[calc(100dvh - 8rem)] h-full md:grid-rows-12 grid-rows-none overflow-scroll">
     <BlogSection id="articles" isAside class="md:col-span-1 col-span-3 row-span-11" label="Articles">
-      <ul class="list-none p-2 text-sm text-primary-200 flex flex-col gap">
+      <ul class="list-none p-2 text-sm text-primary-200 flex flex-col gap md:max-h-auto max-h-36 overflow-scroll">
         {#if filteredArticles.length === 0 && data.articles.length > 0}
           <li class="w-full text-primary-400">No articles found, remove filters</li>
         {/if}
@@ -146,14 +146,14 @@ const handleShare: MouseEventHandler<HTMLButtonElement> = (event) => {
         {/each}
       </ul>
     </BlogSection>
-    <div class="md:col-span-2 col-span-3 row-span-11 grid grid-rows-10 gap-3">
+    <div class="md:col-span-2 col-span-3 row-span-11 grid md:grid-rows-10 grid-rows-none gap-3">
       <BlogSection id="post" label="Post" class={cn(!!$page.params.slug ? "row-span-9" : "row-span-10")}>
-        <div id="blog-post" class="px-2 h-[98%] overflow-scroll overscroll-none">
+        <div id="blog-post" class="px-2 h-[98%] overscroll-none overflow-visible md:overflow-scroll">
           {@render children?.()}
         </div>
       </BlogSection>
       {#if $page.params.slug}
-      <BlogSection id="share" class="row-span-1 py-2 px-3" label="Share">
+      <BlogSection id="share" class="row-span-1 py-1.5 px-3" label="Share">
         <div class="flex flex-row gap-4">
           <Button type="button" hasIcon><SocialXIcon className="size-4" /><span>Twitter</span></Button>
           <Button type="button" hasIcon><SocialLinkedinIcon className="size-4" /><span>LinkedIn</span></Button>
@@ -164,11 +164,9 @@ const handleShare: MouseEventHandler<HTMLButtonElement> = (event) => {
       </BlogSection>
       {/if}
     </div>
-  </main>
-  <div class="fixed md:block hidden bottom-10 w-full px-4">
-    <BlogSection id="shortcuts" label="Shortcuts" class="pb-1 px-4">
-      <div class="flex justify-between">
-        <div class="flex gap-2 divide-x divide-primary-500 items-center">
+    <BlogSection id="shortcuts" label="Shortcuts" class="px-4 col-span-3 row-span-1 h-full md:block flex flex-col justify-center items-center">
+      <div class="flex justify-between items-center pt-1.5">
+        <div class="flex gap-2 divide-x divide-primary-500 items-center h-full">
           {#each shortcuts as { key, description }}
             <div class="flex flex-row gap-1 items-center text-sm first:pl-0 pl-2">
               <kbd class="text-primary-200">{key}</kbd>
@@ -184,6 +182,7 @@ const handleShare: MouseEventHandler<HTMLButtonElement> = (event) => {
         </div>
       </div>
     </BlogSection>
-  </div>
+  </main>
+
   <BlogModal {closeModal} {search} {handleFilter} {showModal} />
 </div>
