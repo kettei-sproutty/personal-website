@@ -1,7 +1,8 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { compile } from 'mdsvex'
-import type { BlogPost, MetadataKey } from './blog'
+import type { MetadataKey } from './motions'
+import type { BlogPost } from './post'
 
 export const getBlogPosts = async (): Promise<BlogPost[]> => {
   const blogDirectory = path.resolve('src/contents')

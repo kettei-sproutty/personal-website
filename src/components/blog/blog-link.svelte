@@ -1,7 +1,7 @@
 <script lang="ts">
 import { page } from '$app/stores'
 import { cn } from '$lib'
-import type { BlogPost } from '$lib/blog'
+import type { BlogPost } from '$lib/blog/post'
 
 type BlogLinkProps = {
   article: BlogPost

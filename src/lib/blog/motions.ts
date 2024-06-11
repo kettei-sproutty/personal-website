@@ -1,10 +1,6 @@
-export type MetadataKey = 'title' | 'description' | 'date' | 'slug'
+import type { BlogPost } from './post'
 
-export interface BlogPost {
-  content: string
-  metadata: Record<MetadataKey, string>
-  slug: string
-}
+export type MetadataKey = 'title' | 'description' | 'date' | 'slug'
 
 type SetMotionOptions = {
   key: string
