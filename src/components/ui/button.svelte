@@ -15,7 +15,7 @@ const { children, type, fullWidth = false, class: className, ...props }: ButtonP
   type={type}
   class={cn(
     "border border-primary-700 bg-primary-700 transition-colors duration-200 ease-in-out text-primary-200 px-2 py-1 rounded-md flex items-center gap-2",
-    "hover:bg-primary-600 focus:bg-primary-500",
+    "hover:bg-primary-600 focus:bg-primary-700 focus:outline-none active:bg-primary-800 active:text-primary-100",
     {
       "flex gap-2 items-center": props.hasIcon,
       "w-full flex items-center justify-center": fullWidth,

@@ -9,6 +9,9 @@
 <script lang="ts">
 import { goto } from '$app/navigation'
 import { page } from '$app/stores'
+import BlogLink from '$components/blog/blog-link.svelte'
+import BlogModal from '$components/blog/blog-modal.svelte'
+import BlogSection from '$components/blog/blog-section.svelte'
 import Button from '$components/ui/button.svelte'
 import ShareIcon from '$icons/share-icon.svelte'
 import SocialLinkedInIcon from '$icons/social-linkedin-icon.svelte'
@@ -22,7 +25,60 @@ let { data, children } = $props()
 let multiplier = $state<number | null>(null)
 let lastMotion = $state<string | null>(null)
 
+let search = $state('')
+let showModal = $state(false)
+
+let filteredArticles = $derived(
+  data.articles.filter((article) =>
+    article.metadata.title.toLowerCase().includes(search.toLowerCase()),
+  ),
+)
+
 $effect(() => {
+  if (filteredArticles.length === data.articles.length) {
+    return
+  }
+
+  if (filteredArticles.length === 0) {
+    goto('/blog')
+    return
+  }
+
+  if (!$page.params.slug) {
+    goto(`/blog/${filteredArticles[0].slug}`)
+  }
+
+  if (!filteredArticles.find((article) => article.slug === $page.params.slug)) {
+    goto(`/blog/${filteredArticles[0].slug}`)
+  }
+
+  if (filteredArticles.length === 1) {
+    goto(`/blog/${filteredArticles[0].slug}`)
+  }
+
+  data.articles = filteredArticles
+})
+
+const closeModal = () => {
+  showModal = false
+}
+
+const handleFilter = (value: string) => {
+  search = value
+}
+
+$effect(() => {
+  const changeMultiplier = (value: number) => {
+    multiplier = value
+    lastMotion = value.toString()
+  }
+
+  const selectArticle = (slug: string, key: string) => {
+    goto(`/blog/${slug}`)
+    lastMotion = `${multiplier || ''}${key}`
+    multiplier = null
+  }
+
   const handleKeyUp = (event: KeyboardEvent) => {
     const motion = setMotions({
       articles: data.articles,
@@ -30,18 +86,25 @@ $effect(() => {
       key: event.key,
       multiplier,
     })
-    if (!motion) return
 
-    if ('multiplier' in motion) {
-      multiplier = motion.multiplier
-      lastMotion = motion.multiplier.toString()
-      return
+    switch (motion.kind) {
+      case 'null':
+        event.preventDefault()
+        lastMotion = 'null'
+        break
+      case 'modal':
+        event.preventDefault()
+        showModal = true
+        break
+      case 'multiplier':
+        event.preventDefault()
+        changeMultiplier(motion.multiplier)
+        break
+      case 'select':
+        event.preventDefault()
+        selectArticle(motion.slug, event.key)
+        break
     }
-
-    const { slug } = motion
-    goto(`/blog/${slug}`)
-    lastMotion = `${multiplier || ''}${event.key}`
-    multiplier = null
   }
 
   window.addEventListener('keyup', handleKeyUp)
@@ -67,36 +130,24 @@ const shortcuts = [
   { key: 'J', description: 'page down' },
   { key: 'K', description: 'page up' },
   { key: 'x', description: 'repeat last' },
-  { key: '/', description: 'filter' },
+  { key: '\\', description: 'filter' },
 ]
 </script>
 
 <div class="min-h-page h-page relative">
   <main class="grid grid-cols-3 p-4 gap-4 max-h-[calc(100dvh - 10rem)] h-full grid-rows-12">
-    <aside class="blog-section md:col-span-1 col-span-3 row-span-11">
-      <h2 class="blog-section__title">Articles</h2>
-      <div class="h-2"></div>
+    <BlogSection id="articles" isAside class="md:col-span-1 col-span-3 row-span-11" label="articles">
       <ul class="list-none p-2 text-sm text-primary-200 flex flex-col gap">
-        {#each data.articles as article}
+        {#if filteredArticles.length === 0 && data.articles.length > 0}
+          <li class="w-full text-primary-400">No articles found, remove filters</li>
+        {/if}
+        {#each filteredArticles as article}
           <li class="w-full">
-            <a
-              aria-current={$page.params.slug === article.slug ? 'page' : undefined}
-              href="/blog/{article.slug}"
-              class={cn(
-                "flex justify-between hover:bg-primary-600 transition-colors duration-200 ease-in-out px-2",
-                "focus:bg-primary-500", {
-                "bg-primary-700": $page.params.slug === article.slug
-              })}
-            >
-              <span>{article.metadata.title}</span>
-              <span class="text-primary-400">
-                {Intl.DateTimeFormat('en', { year: '2-digit', month: 'short', day: 'numeric' }).format(new Date(article.metadata.date))}
-              </span>
-            </a>
+            <BlogLink article={article} />
           </li>
         {/each}
       </ul>
-    </aside>
+    </BlogSection>
     <div class="md:col-span-2 col-span-3 row-span-11 grid grid-rows-10 gap-3">
       <section class={cn("blog-section", {
         "row-span-9": !!$page.params.slug,
@@ -141,6 +192,7 @@ const shortcuts = [
       </div>
     </div>
   </div>
+  <BlogModal {closeModal} {search} {handleFilter} {showModal} />
 </div>
 
 <style lang="postcss">
