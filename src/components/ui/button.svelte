@@ -4,10 +4,11 @@ import type { HTMLAttributes, HTMLButtonAttributes } from 'svelte/elements'
 
 type ButtonProps = Omit<HTMLButtonAttributes, 'type'> & {
   hasIcon?: boolean
+  fullWidth?: boolean
   type: Exclude<HTMLButtonAttributes['type'], undefined | null>
 }
 
-const { children, type, ...props }: ButtonProps = $props()
+const { children, type, fullWidth = false, class: className, ...props }: ButtonProps = $props()
 </script>
 
 <button
@@ -17,8 +18,9 @@ const { children, type, ...props }: ButtonProps = $props()
     "hover:bg-primary-600 focus:bg-primary-500",
     {
       "flex gap-2 items-center": props.hasIcon,
+      "w-full flex items-center justify-center": fullWidth,
     },
-    props.class,
+    className,
   )}
   {...props}
 >
