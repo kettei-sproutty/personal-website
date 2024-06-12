@@ -15,7 +15,7 @@ const handleDownload = () => {
 }
 </script>
 
-<main class="content h-page divide-x divide-primary-600 relative">
+<main class="content h-auto md:h-page divide-x divide-primary-600 relative">
   <section class="about-me p-4 text-primary-300 flex flex-col gap-2">
     <h1 class="text-4xl text-primary-100">
       Hi, I'm Alessio! <span aria-hidden="true" class="grayscale">👋</span>
@@ -74,7 +74,7 @@ const handleDownload = () => {
   </section>
   <section
     id="resume"
-    class="about-resume border-l border-l-primary-900 max-h-page lg:overflow-scroll overflow-auto"
+    class="about-resume border-l border-l-primary-900 lg:max-h-page max-h-max lg:overflow-scroll overflow-auto"
   >
     <Resume />
   </section>

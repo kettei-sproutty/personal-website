@@ -1,5 +1,6 @@
 <script lang="ts" context="module">
 import GlobeIcon from '$icons/globe-icon.svelte'
+import PhoneIcon from '$icons/phone-icon.svelte'
 import SocialEmailIcon from '$icons/social-email-icon.svelte'
 import SocialGithubIcon from '$icons/social-github-icon.svelte'
 import SocialLinkedinIcon from '$icons/social-linkedin-icon.svelte'
@@ -23,11 +24,11 @@ export const resume = {
   name: 'Alessio Marchi',
   role: 'Senior Software Developer',
   about: [
-    "I'm a 26 years old Senior Software Developer based in Rome, Italy. I love Rust, Typescript, open-source community/projects and the tech community in general.",
-    'I love sharing knowledge, discuss and collaborate with people from all over the world, trying to improving myself day by day, learning new things and experimenting with new technologies.',
+    'I am a 26-year-old Senior Software Developer located in Rome, Italy, specializing in Rust, TypeScript, and contributing to open-source community projects. My passion extends to the broader tech community, where I actively engage.',
+    'I am dedicated to sharing knowledge, engaging in discussions, and collaborating globally. My commitment to personal growth drives me to continuously learn, experiment with new technologies, and refine my skills.',
   ],
   contacts: [
-    { name: 'email', value: 'mailto:about@alessiomarchi.dev', Icon: SocialEmailIcon },
+    { name: 'email', value: 'mailto:alessiomarchi.dev@gmail.com', Icon: SocialEmailIcon },
     { name: 'GitHub', value: 'https://github.com/kettei-sproutty', Icon: SocialGithubIcon },
     { name: 'Twitter', value: 'https://x.com/alessiom97', Icon: SocialXIcon },
     {
@@ -45,16 +46,17 @@ export const resume = {
       projects: [
         {
           description:
-            'Team of 3, build a Fullstack application for analyzing website a11y (WCAG 2.2) issues, and a stream-based AI chatbot for suggesting fixes.',
+            'Team of 3, developed a full-stack application for analyzing website accessibility (WCAG 2.2) issues and a stream-based AI chatbot for suggesting fixes.',
           stack: ['NextJS', 'Node (Hono)', 'MongoDB', 'IA', 'TailwindCSS', 'GitHub', 'Figma'],
         },
         {
           description:
-            'Team of 3, build a WYSIWYG editor, similar to Docs/Word, with pagination, normalization, and custom blocks.',
+            'Team of 3, built a WYSIWYG editor, similar to Docs/Word, featuring pagination, normalization, and custom blocks.',
           stack: [
             'React with Vite',
-            'SlateJS/PlateJS',
+            'SlateJS',
             'TailwindCSS',
+            'Jotai',
             'Turborepo',
             'Azure',
             'Figma',
@@ -62,8 +64,16 @@ export const resume = {
         },
         {
           description:
-            'Team of 2, build an interactive 2D application, using sprites and animations, and a Rust script that generates the sprites.',
-          stack: ['NextJS (SSG)', 'ThreeJS (R3F)', 'Rust', 'Framer Motion', 'Azure', 'Figma'],
+            'Team of 2,  built an interactive 2D application using sprites and animations, along with a Rust script that generates the sprites atlas.',
+          stack: [
+            'NextJS (SSG)',
+            'ThreeJS (R3F)',
+            'Valtio',
+            'Rust',
+            'Framer Motion',
+            'Azure',
+            'Figma',
+          ],
         },
       ],
     },
@@ -73,13 +83,13 @@ export const resume = {
       projects: [
         {
           description:
-            'Team of 6, build a graph-based web application, for handling connections between nodes rappresenting a power plant. After the delivery it was studied a refactor using react-flow instead of mxgraph.',
-          stack: ['React', 'mxGraph', 'SASS', 'Azure', 'Figma'],
+            'Team of 6, built a graph-based web application for handling connections between nodes in a power plant. After delivery, we studied a refactor using React Flow instead of mxGraph.',
+          stack: ['React', 'mxGraph', 'Redux', 'SASS', 'Azure', 'Figma'],
         },
         {
           description:
-            'Team of 8, progressive rewrite of a web application, from VanillaJS to Vue, with a new design and new features, handling the integration with payment services.',
-          stack: ['Vue', 'Nuxt', 'Adobe IO', 'Adobe AEM', 'Miro'],
+            'Team of 8, progressively rewrote a web application from VanillaJS to Vue, incorporating a new design and new features, and managing the integration with payment services.',
+          stack: ['Vue', 'Nuxt', 'Vuex', 'Adobe IO', 'Adobe AEM', 'Miro'],
         },
       ],
       period: '2021 - 2022',
@@ -91,7 +101,7 @@ export const resume = {
       projects: [
         {
           description:
-            'Team of 4, developed an application for reserving sport fields in Rome. The application was built using a microservices architecture, with a federated GraphQL gateway.',
+            'Team of 4, developed an application for reserving sports fields in Rome. The application was built using a microservices architecture with a federated GraphQL gateway.',
           stack: ['React', 'GraphQL (Apollo Server/Client)', 'Apollo Federation', 'MongoDB'],
         },
       ],
@@ -103,7 +113,7 @@ export const resume = {
       projects: [
         {
           description:
-            'Solo project, developed a portal for creating and managing insurance policies, where customers can track their policies and make payments.',
+            'Solo project, developed a portal for creating and managing insurance policies, enabling customers to track their policies and make payments.',
           stack: ['NextJS (SSR)', 'Hasura', 'PostgreSQL', 'GraphQL'],
         },
       ],
@@ -120,6 +130,7 @@ export const resume = {
       'Apollo GraphQL',
       'Tauri',
       'Leptos',
+      'Valtio/Jotai/Redux',
       'Axum/Rocket',
       'Redis',
       'SlateJS',

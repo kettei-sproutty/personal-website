@@ -43,7 +43,7 @@ kbd {
     --a4-height: 297mm;
     --a4-aspect-ratio: calc(var(--a4-height) / var(--a4-width));
 
-    --page-min-height: calc(100dvh - var(--header-weight) - var(--footer-height));
+    --page-min-height: calc(100dvh - var(--header-height) - var(--footer-height));
 
     --primary-100: #e8e9e9;
     --primary-200: #cdcecf;

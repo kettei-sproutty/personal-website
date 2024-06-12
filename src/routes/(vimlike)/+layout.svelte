@@ -21,8 +21,6 @@ $effect(() => {
       mode = Mode.NORMAL
     } else if (mode === Mode.NORMAL && e instanceof KeyboardEvent) {
       if (e.key === 'Backspace') {
-        history.back()
-        // Fallback if there is no history
         goto('/')
       }
     }
@@ -59,7 +57,7 @@ const { children } = $props()
   <footer class="print:hidden fixed bottom-0 w-full">
     <div class="bg-primary-700 p-2 text-white text-xs flex items-center justify-between gap-4 w-full px-4">
       <div class="flex items-center space-x-4 flex-grow">
-        <div class="font-mono uppercase px-2 text-primary-800 bg-primary-100 rounded-full font-mono w-16 text-center">
+        <div class="uppercase px-2 text-primary-800 bg-primary-100 rounded-full font-mono w-16 text-center">
           {mode}
         </div>
         <div class="flex items-center space-x-1">

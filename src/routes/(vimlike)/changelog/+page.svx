@@ -6,8 +6,8 @@
   let { data } = $props();
 </script>
 
-<main class="container mx-auto px-4 py-8">
-  <section id="changelog">
+<main class="px-4 py-8 max-h-page overflow-scroll overscroll-none h-full">
+  <section id="changelog" class="max-w-md mx-auto">
     {@html data.data.changelogs.code}
   </section>
 </main>
