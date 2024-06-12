@@ -13,8 +13,8 @@ import { BlogLink, BlogModal, BlogSection } from '$components/blog'
 import Button from '$components/ui/button.svelte'
 import { ShareIcon, SocialLinkedinIcon, SocialXIcon } from '$icons/index'
 import { cn } from '$lib'
-import { processMotions } from '$lib/blog/motions.js'
-import { shortcuts } from '$lib/blog/shortcut'
+import { processMotions } from '$lib/blog/motions'
+import { shortcuts } from '$lib/blog/shortcuts'
 import type { MouseEventHandler } from 'svelte/elements'
 
 let { data, children } = $props()

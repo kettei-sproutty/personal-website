@@ -4,6 +4,6 @@ export const shortcuts = [
   { key: 'k', description: 'list up' },
   { key: 'J', description: 'page down' },
   { key: 'K', description: 'page up' },
-  { key: 'x', description: 'repeat last' },
+  // { key: 'x', description: 'repeat last' },
   { key: '\\', description: 'filter' },
 ]
