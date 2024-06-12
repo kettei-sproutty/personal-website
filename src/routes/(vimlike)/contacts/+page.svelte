@@ -14,6 +14,7 @@ import Xicon from '$icons/social-x-icon.svelte'
 import type { ChangeEventHandler } from 'svelte/elements'
 import type { SubmitFunction } from './$types'
 
+import Button from '$components/ui/button.svelte'
 import Input from '$components/ui/input.svelte'
 import Textarea from '$components/ui/textarea.svelte'
 
@@ -96,12 +97,8 @@ const handleChange: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> =
     <Input oninput={handleChange} error={formState.issues["email"] || null} label="Email" type="email" name="email" required />
     <Input oninput={handleChange} error={formState.issues["subject"] || null} label="Subject" type="text" name="subject" required />
     <Textarea oninput={handleChange} error={formState.issues["message"] || null} label="Message" name="message" rows={3} required />
-    <button
-      type="submit"
-      disabled={isButtonDisabled}
-      class="bg-primary-700 hover:bg-primary-500 transition-colors duration-100 text-white px-4 py-2 mt-4 rounded"
-    >
+    <Button type="submit" disabled={isButtonDisabled} hasIcon={false} fullWidth class="text-center pt-2">
       Send
-    </button>
+    </Button>
   </form>
 </main>
