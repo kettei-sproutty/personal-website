@@ -5,5 +5,5 @@ export const shortcuts = [
   { key: 'J', description: 'page down' },
   { key: 'K', description: 'page up' },
   // { key: 'x', description: 'repeat last' },
-  { key: '\\', description: 'filter' },
+  { key: 's', description: 'filter' },
 ]

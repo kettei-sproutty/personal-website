@@ -31,7 +31,7 @@ export const processMotions = (options: ProcessMotionsOptions): ProcessMotionsRe
     K: () => pageDown(),
     J: () => pageUp(),
     x: () => repeatMotion(),
-    '\\': () => search(),
+    s: () => search(),
   }
 
   if (/^\d$/.test(options.key))

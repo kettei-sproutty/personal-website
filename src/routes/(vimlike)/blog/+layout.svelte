@@ -32,7 +32,7 @@ let filteredArticles = $derived(
 )
 
 $effect(() => {
-  if (filteredArticles.length === data.articles.length) return
+  if (filteredArticles.length !== 1 && filteredArticles.length === data.articles.length) return
 
   if (filteredArticles.length === 0) {
     goto('/blog')

@@ -2,12 +2,14 @@
   "name": "www",
   "version": "1.1.1",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vite dev --host",
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "cypress:open": "cypress open"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.7.3",
@@ -18,9 +20,13 @@
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
     "@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
     "@vercel/speed-insights": "^1.0.12",
+    "@types/node": "^20.14.2",
+    "autoprefixer": "^10.4.19",
     "clsx": "^2.1.1",
+    "cypress": "^13.11.0",
     "lefthook": "^1.6.15",
     "mdsvex": "^0.11.2",
+    "postcss": "^8.4.38",
     "svelte": "^5.0.0-next.1",
     "svelte-check": "^3.6.0",
     "tailwind-merge": "^2.3.0",
@@ -28,12 +34,9 @@
     "typescript": "^5.0.0",
     "vite": "^5.0.3"
   },
-  "type": "module",
   "dependencies": {
     "@vercel/analytics": "^1.3.1",
-    "autoprefixer": "^10.4.19",
     "highlight.js": "^11.9.0",
-    "postcss": "^8.4.38",
     "resend": "^3.2.0",
     "svelte-highlight": "^7.6.1",
     "tailwindcss": "^3.4.3",

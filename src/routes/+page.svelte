@@ -5,14 +5,7 @@
 
 <script lang="ts">
 import { goto } from '$app/navigation'
-
-const routes: Record<string, string> = {
-  '1': 'about',
-  '2': 'contacts',
-  '3': 'blog',
-}
-
-const comingSoonRoutes = ['projects']
+import { comingSoonRoutes, routes } from '$lib/homepage-routes'
 
 $effect(() => {
   const handleKeydown = (e: KeyboardEvent) => {

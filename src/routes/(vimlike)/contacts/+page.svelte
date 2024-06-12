@@ -34,9 +34,6 @@ type FormState = {
 }
 
 let formState = $state<FormState>({ status: null, issues: {} })
-let isButtonDisabled = $derived(
-  formState.status === 'pending' || Object.keys(formState.issues).length > 0,
-)
 
 const enhanceFunction: SubmitFunction = ({ formElement }) => {
   formState.status = 'pending'
@@ -97,7 +94,7 @@ const handleChange: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> =
     <Input oninput={handleChange} error={formState.issues["email"] || null} label="Email" type="email" name="email" required />
     <Input oninput={handleChange} error={formState.issues["subject"] || null} label="Subject" type="text" name="subject" required />
     <Textarea oninput={handleChange} error={formState.issues["message"] || null} label="Message" name="message" rows={3} required />
-    <Button type="submit" disabled={isButtonDisabled} hasIcon={false} fullWidth class="text-center pt-2">
+    <Button type="submit" disabled={formState.status === 'pending' || Object.keys(formState.issues).length > 0} hasIcon={false} fullWidth class="text-center pt-2">
       Send
     </Button>
   </form>

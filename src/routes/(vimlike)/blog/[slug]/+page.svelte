@@ -8,6 +8,6 @@ let { data } = $props()
   <meta name="robots" content="index, follow" />
 </svelte:head>
 
-<div class="text-xs">
+<article class="text-xs">
   {@html data.article.content}
-</div>
+</article>
