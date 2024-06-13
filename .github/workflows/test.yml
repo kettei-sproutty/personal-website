@@ -16,3 +16,4 @@ jobs:
         with:
           build: pnpm build
           start: pnpm preview
+          RESEND_API: ${{ secrets.RESEND_API }}
