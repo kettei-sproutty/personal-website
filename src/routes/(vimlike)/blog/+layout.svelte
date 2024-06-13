@@ -34,17 +34,18 @@ let filteredArticles = $derived(
 $effect(() => {
   if (filteredArticles.length !== 1 && filteredArticles.length === data.articles.length) return
 
-  if (filteredArticles.length === 0) {
-    goto('/blog')
+  if ($page.params.slug) return
+
+  const article = filteredArticles.find((article) => article.slug === $page.params.slug)
+  if (article) {
+    goto(`/blog/${article.slug}`)
     return
   }
 
-  if (
-    !$page.params.slug ||
-    filteredArticles.find((article) => article.slug === $page.params.slug) ||
-    filteredArticles.length === 1
-  )
-    goto(`/blog/${filteredArticles[0].slug}`)
+  if (search.length > 0 && filteredArticles.length === 1) {
+    const article = filteredArticles[0]
+    goto(`/blog/${article.slug}`)
+  }
 })
 
 const closeModal = () => {
