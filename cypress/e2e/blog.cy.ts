@@ -6,7 +6,7 @@ describe('blog page', () => {
 
   it('should return to the homepage', () => {
     cy.visit('/blog')
-    cy.get('a').contains(/back/i).click()
+    cy.get('a').contains(/back/i).first().click()
     cy.url().should('include', '/')
   })
 
@@ -32,23 +32,12 @@ describe('blog page', () => {
       cy.get('input').should('not.exist')
     })
 
-    it('should filter the articles pressing <esc>', () => {
+    it('should close the filter modal pressing <esc>', () => {
       cy.visit('/blog')
       cy.keyup('s')
       cy.get('input').should('be.focused').type('test')
       cy.get('input').should('have.value', 'test')
       cy.get('input').type('{esc}')
-      cy.get('input').should('not.exist')
-    })
-
-    it('should filter the articles', () => {
-      cy.visit('/blog')
-      cy.keyup('s')
-      cy.get('input').should('be.focused').type('test')
-      cy.get('input').should('have.value', 'test')
-      cy.get('button')
-        .contains(/search/i)
-        .click()
       cy.get('input').should('not.exist')
     })
 

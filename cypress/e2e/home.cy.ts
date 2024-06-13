@@ -15,7 +15,7 @@ describe('homepage', () => {
 
     it(`should navigate to the ${url} page with shortcut`, () => {
       cy.visit('/')
-      cy.keypress(shortcut)
+      cy.keydown(shortcut)
       cy.url().should('include', url)
     })
   }
@@ -31,7 +31,7 @@ describe('homepage', () => {
 
     it('should navigate to the changelog page with shortcut', () => {
       cy.visit('/')
-      cy.keypress('c')
+      cy.keydown('c')
       cy.url().should('include', '/changelog')
     })
   })
