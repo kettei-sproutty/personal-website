@@ -1,4 +1,4 @@
-import { RESEND_API } from '$env/static/private'
+import { env } from '$env/dynamic/private'
 import { fail } from '@sveltejs/kit'
 import { Resend } from 'resend'
 import { z } from 'zod'
@@ -13,7 +13,7 @@ const contactMeSchema = z.object({
 
 export const actions: Actions = {
   'send-email': async (event) => {
-    const resend = new Resend(RESEND_API)
+    const resend = new Resend(env.RESEND_API)
     const formData = await event.request.formData()
     const data = Object.fromEntries(formData.entries())
 
