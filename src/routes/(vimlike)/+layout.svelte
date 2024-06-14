@@ -1,6 +1,7 @@
 <script lang="ts">
 import { goto } from '$app/navigation'
 import { page } from '$app/stores'
+import GitIcon from '$icons/git-icon.svelte'
 import LeftIcon from '$icons/left-icon.svelte'
 import LogoIcon from '$icons/logo-icon.svelte'
 
@@ -60,7 +61,7 @@ const { children } = $props()
           {mode}
         </div>
         <div class="flex items-center space-x-1">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><line x1="6" x2="6" y1="3" y2="15"></line><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg>
+          <GitIcon />
           <span>main</span>
         </div>
       </div>
