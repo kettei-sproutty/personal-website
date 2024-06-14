@@ -1,5 +1,41 @@
 # Changelog
 
+## [1.2.0](https://github.com/kettei-sproutty/personal-website/compare/v1.1.1...v1.2.0) (2024-06-14)
+
+
+### Features
+
+* add vercel analytics ([7d51814](https://github.com/kettei-sproutty/personal-website/commit/7d5181493ef95c562867230b8927b7d32bc81a61))
+* blog search ([5051f20](https://github.com/kettei-sproutty/personal-website/commit/5051f20b7080d38fe1a446bccada977bd98534f2))
+* blog shortcut, bug resume ([47b8b74](https://github.com/kettei-sproutty/personal-website/commit/47b8b7427642e8624e462707a0a844696f3e2b3b))
+* **blog:** initialize page ([9240380](https://github.com/kettei-sproutty/personal-website/commit/9240380853535a1b9c2d69aa80126243993ba5fc))
+* **blog:** page layout, parsing ([3279e25](https://github.com/kettei-sproutty/personal-website/commit/3279e2597c7331d8afd2271be92c5a9291326e1a))
+* **blog:** page scroll ([e271f38](https://github.com/kettei-sproutty/personal-website/commit/e271f38881e8cc1216756af208185906899427ce))
+* **ci:** add test job ([cfa4886](https://github.com/kettei-sproutty/personal-website/commit/cfa48869e2c060c602718a9936edff69aadbd659))
+* **e2e:** add cypress ([cfba1ad](https://github.com/kettei-sproutty/personal-website/commit/cfba1ad63228cf24201d828f18f15bbcbef8761f))
+
+
+### Bug Fixes
+
+* add placeholder post ([6903930](https://github.com/kettei-sproutty/personal-website/commit/69039303c822eac65a7bff8a646508476ee3743f))
+* **blog:** handle backspace in blog page ([6aba364](https://github.com/kettei-sproutty/personal-website/commit/6aba36457e3b84aab3c3b1069433f9bb8f93b7db))
+* **blog:** hide shortcuts on mobile ([da20fdc](https://github.com/kettei-sproutty/personal-website/commit/da20fdcbf1c2fe43ef467c2f03627dbd00c774c4))
+* **blog:** isolate server function ([70764a8](https://github.com/kettei-sproutty/personal-website/commit/70764a85344c7c925ed9cd62148da7991e00cd32))
+* **blog:** layout ([9dbf85a](https://github.com/kettei-sproutty/personal-website/commit/9dbf85a82c9c8d8f788da638971cceaf90156313))
+* **blog:** search and filtering ([cafc0fd](https://github.com/kettei-sproutty/personal-website/commit/cafc0fdda48f60f4a788b31de50ab3e6daa5c885))
+* **button:** remove class from props ([9157ae7](https://github.com/kettei-sproutty/personal-website/commit/9157ae70629128d892c16a9965ab2b3c458875e1))
+* contacts page button, remove placeholder articles ([4d58dd2](https://github.com/kettei-sproutty/personal-website/commit/4d58dd29e13ad6ab4dcda405a8855aa76a70bbcd))
+* **css:** page height ([6937c9c](https://github.com/kettei-sproutty/personal-website/commit/6937c9c3fa15aed63556b90e26bca319b79fd8d4))
+* **cypress:** use corret events, remove duplicated tests ([574fc61](https://github.com/kettei-sproutty/personal-website/commit/574fc61b50fc42674ba3f27920d44eaae8bdb219))
+* **lefthook:** use local packages ([2be8322](https://github.com/kettei-sproutty/personal-website/commit/2be8322165328075790e3d964d2a7a7ad8df02cb))
+* move resend inside function ([a7f2e30](https://github.com/kettei-sproutty/personal-website/commit/a7f2e30c76a067cf772de0937a8e960c1a73beaf))
+* remove articles assignment on filter ([164a978](https://github.com/kettei-sproutty/personal-website/commit/164a978ce03a2a92b61fde51c0db081744e61043))
+* remove bg from article ([0dbfbe1](https://github.com/kettei-sproutty/personal-website/commit/0dbfbe16e5258cdaf2848aab37668e50340a8d46))
+* **styles:** add padding-bottom on contacts page ([e41413d](https://github.com/kettei-sproutty/personal-website/commit/e41413d6de9b9a7bb24258142846395ef1b26cc5))
+* **styles:** uniform focus style on blog link ([4fad864](https://github.com/kettei-sproutty/personal-website/commit/4fad86480ae0154b325ab6494d7cb2cf7e4b5a4c))
+* uppercase section first letter ([92d090f](https://github.com/kettei-sproutty/personal-website/commit/92d090f96374795b877271a9ed7661f7c2805b24))
+* use svelte dynamic ([d7b15aa](https://github.com/kettei-sproutty/personal-website/commit/d7b15aaa0fcfea91846459d5bd9a7385f6437451))
+
 ## [1.1.1](https://github.com/kettei-sproutty/personal-website/compare/v1.1.0...v1.1.1) (2024-06-09)
 
 
