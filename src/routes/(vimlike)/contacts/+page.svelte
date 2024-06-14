@@ -61,7 +61,7 @@ const handleChange: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> =
 </script>
 
 <main
-  class="min-h-page bg-primary-900 text-primary-300 flex flex-col items-center justify-center gap m-auto max-w-md p-4"
+  class="min-h-page bg-primary-900 text-primary-300 flex flex-col items-center justify-center gap m-auto max-w-md p-4 pb-12"
 >
   <h1 class="text-white text-3xl">Get in touch!</h1>
   <p class="text-sm text-center">
