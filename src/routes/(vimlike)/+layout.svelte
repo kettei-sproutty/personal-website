@@ -19,10 +19,9 @@ $effect(() => {
       mode = Mode.INSERT
     } else if (mode === Mode.INSERT) {
       mode = Mode.NORMAL
+      if (e instanceof KeyboardEvent && e.key === 'Backspace') return goto('/')
     } else if (mode === Mode.NORMAL && e instanceof KeyboardEvent) {
-      if (e.key === 'Backspace') {
-        goto('/')
-      }
+      if (e.key === 'Backspace') goto('/')
     }
   }
 
