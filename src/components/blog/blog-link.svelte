@@ -15,7 +15,7 @@ let { article }: BlogLinkProps = $props()
   href="/blog/{article.slug}"
   class={cn(
     "flex justify-between hover:bg-primary-600 transition-colors duration-200 ease-in-out px-2",
-    "focus:bg-primary-500",
+    "focus:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50",
     {
       "bg-primary-700": $page.params.slug === article.slug,
     },
