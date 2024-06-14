@@ -165,7 +165,7 @@ const handleShare: MouseEventHandler<HTMLButtonElement> = (event) => {
       </BlogSection>
       {/if}
     </div>
-    <BlogSection id="shortcuts" label="Shortcuts" class="px-4 col-span-3 row-span-1 h-full md:block flex flex-col justify-center items-center">
+    <BlogSection id="shortcuts" label="Shortcuts" class="px-4 col-span-3 row-span-1 h-full md:block hidden flex-col justify-center items-center">
       <div class="flex justify-between items-center pt-1.5">
         <div class="flex gap-2 divide-x divide-primary-500 items-center h-full">
           {#each shortcuts as { key, description }}
