@@ -1,0 +1,14 @@
+{
+  "name": "tsconfig",
+  "version": "0.0.0",
+  "files": ["tsconfig.json"],
+  "exports": {
+    ".": {
+      "default": ["./tsconfig.json"]
+    }
+  },
+  "devDependencies": {
+    "@tsconfig/strictest": "^2.0.5",
+    "typescript": "^5.4.5"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "env": ["RESEND_API"]
+    },
+    "build": {
+      "cache": false,
+      "outputs": [".sveltekit"]
+    },
+    "start": {}
+  }
+}

@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-size: 100%;
+  scrollbar-color: var(--primary-500) transparent;
+  scrollbar-width: thin;
+  @apply font-sans bg-primary-900 text-primary-100;
+  @apply selection:bg-primary-500 selection:text-primary-100;
+  @apply overscroll-none;
+}
+
+body {
+  @apply antialiased overscroll-none;
+}
+
+kbd {
+  @apply hidden md:inline;
+}
+
+@layer base {
+  @font-face {
+    font-family: "Exo 2";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src:
+      local("Exo 2"),
+      url(/fonts/Exo2.ttf) format("truetype");
+  }
+
+  @font-face {
+    font-family: "JetBrains Mono";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src:
+      local("JetBrains Mono"),
+      url(/fonts/JetBrainsMono.ttf) format("truetype");
+  }
+
+  :root {
+    --primary-100: #e8e9e9;
+    --primary-200: #cdcecf;
+    --primary-300: #9b9c9e;
+    --primary-400: #686b6e;
+    --primary-500: #363a3d;
+    --primary-600: #1a1d21;
+    --primary-700: #131619;
+    --primary-800: #0d0f10;
+    --primary-900: #060708;
+
+    --violet: #a600ff;
+  }
+}
