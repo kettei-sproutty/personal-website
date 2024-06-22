@@ -3,15 +3,16 @@ parallel = true
 
 [pre-commit.commands.check-js]
 glob = "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc,yml,yaml,svelte}"
-run = "pnpm biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true {staged_files} && git update-index --again"
+run = "pnpm biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files} && git update-index --again"
 
-# [pre-commit.commands.check-svelte]
-# glob = "*.svelte"
-# run = "pnpm svelte-check -- {staged_files} && git update-index --again"
+[pre-commit.commands.check-svelte]
+root = "apps/www"
+glob = "*.svelte"
+run = "pnpm svelte-check"
 
-# [pre-commit.commands.update-mdx]
-# glob = "*.mdx"
-# run = "pnpm scripts/update-mdx {staged_files} && git update-index --again"
+[pre-commit.commands.check-rs]
+glob = "*.rs"
+run = "cargo clippy && git update-index --again"
 
 [pre-commit.commands.check-toml]
 glob = "*.toml"

@@ -6,8 +6,8 @@ node_modules
 
 # Svelte
 .svelte-kit
-/build
-/package
+apps/www/build
+apps/www/package
 
 # Vite
 vite.config.js.timestamp-*
@@ -17,3 +17,10 @@ vite.config.ts.timestamp-*
 .env
 .env.*
 !.env.example
+
+# Turbo
+.turbo
+
+# Cargo
+target
+pkg

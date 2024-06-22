@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "biomejs.biome",
+    "EditorConfig.EditorConfig",
+    "svelte.svelte-vscode",
+    "bradlc.vscode-tailwindcss",
+    "Vercel.turbo-vsc"
+  ]
+}
